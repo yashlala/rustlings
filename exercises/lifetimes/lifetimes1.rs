@@ -7,9 +7,11 @@
 //
 // Execute `rustlings hint lifetimes1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
-fn longest(x: &str, y: &str) -> &str {
+// TODO(yash): Non-optimal lifetime? The real lifetime should match either `x` or `y` depending on
+// which one is the longest. Here, we only tell that the output should last only as long as the
+// _shorter_ one of the two.
+// Is this just the best we can do at compile time?
+fn longest<'a> (x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {
